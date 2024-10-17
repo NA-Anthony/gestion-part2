@@ -42,9 +42,9 @@
             <%
                 // Récupérer la session
                 HttpSession sessions = request.getSession();
-
-                if (sessions.getAttribute("user") != null) {
-                // La session existe
+                User user = (User)sessions.getAttribute("user");
+                if (user.getRole() == "Chef") {
+                // Il s'agit d'un chef de département
                     %>
                         <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#insert" role="button" aria-expanded="false" aria-controls="insert">
@@ -55,13 +55,7 @@
                         <div class="collapse" id="insert">
                           <ul class="nav sub-menu">
                             <li class="nav-item">
-                              <a href="/mini-projet/pages/new_departement.jsp" class="nav-link">Insertion demande</a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/mini-projet/Pos2_servlet" class="nav-link">Poste</a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/mini-projet/pages/new_departement.jsp" class="nav-link">Département</a>
+                              <a href="/mini-projet/pages/new_demande_achat.jsp" class="nav-link">Demande d'Achat</a>
                             </li>
 
                           </ul>
@@ -119,8 +113,8 @@
                         
                     <%
 
-                        if (sessions.getAttribute("admin") != null) {
-                            User user = (User)sessions.getAttribute("user");
+                        if (sessions.getAttribute("user") != null) {
+                            
                         // La session existe
                             %>
                                 <p class="tx-16 fw-bolder"><%= user.getNom()%></p>

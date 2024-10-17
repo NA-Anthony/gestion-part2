@@ -74,9 +74,9 @@ public class Login_servlet extends HttpServlet {
             if(user != null)
             {
                 session.setAttribute("user", user);
-                response.sendRedirect("/mini-projet/maisatra.jsp");
+                response.sendRedirect("/mini-projet/accueil.jsp");
             }
-            response.sendRedirect("/mini-projet/pages/index.jsp");
+            response.sendRedirect("/mini-projet/index.jsp");
         } catch (Exception e) {
         }
         
