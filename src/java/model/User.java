@@ -57,7 +57,7 @@ public class User {
     public boolean isPdg(String email, String mdp) throws Exception{
         Connection connection=(Connection)Connect.getPostgresConnection();
         try {
-            String sql = "SELECT * FROM pdg WHERE nom = ? AND mdp = ?";
+            String sql = "SELECT * FROM pdg WHERE email = ? AND mdp = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, mdp);
@@ -74,7 +74,7 @@ public class User {
     public boolean isChef(String email, String mdp) throws Exception{
         Connection connection=(Connection)Connect.getPostgresConnection();
         try {
-            String sql = "SELECT * FROM chef_departement WHERE nom = ? AND mdp = ?";
+            String sql = "SELECT * FROM chef_departement WHERE email = ? AND mdp = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, mdp);
