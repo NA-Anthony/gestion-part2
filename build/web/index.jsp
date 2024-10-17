@@ -9,49 +9,43 @@
 </head>
 <body>
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
-            <form action="/mini-projet/Login_servlet" method="post">
-			<h1>Administrateur</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>Veuillez remplir les champs</span>
-                        <input type="email" placeholder="Veuillez entrer votre Email" name="email" />
-                        <input type="password" placeholder="Veuillez entrer votre Mot de passe" name="mdp" />
-			<button>Se connecter</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="accueil.jsp" method="post">
-			<h1>Connexion</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>Veuillez remplir les champs</span>
-			<input type="email" placeholder="Veuillez entrer votre Email" />
-			<input type="password" placeholder="Veuillez entrer votre Mot de passe" />
-			<a href="#">Mot de passe oublié ?</a>
-			<button>Se connecter</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Gestion</h1>
-				<p></p>
-				<button class="ghost" id="signIn">Client</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Gestion</h1>
-				<p></p>
-				<button class="ghost" id="signUp">Administrateur</button>
-			</div>
-		</div>
-	</div>
+    <div class="form-container sign-up-container">
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="/mini-projet/Login_servlet" method="post">
+            <h1>Connexion</h1>
+            <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>Veuillez remplir les champs</span>
+            <input type="email" name="email" placeholder="Veuillez entrer votre Email" />
+            <input type="password" name="mdp" placeholder="Veuillez entrer votre Mot de passe" />
+            <a href="#">Mot de passe oublié ?</a>
+            <button>Se connecter</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                    <h1>Gestion</h1>
+                    <p></p>
+                    <button class="ghost" id="signIn">Client</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                    <h1>Gestion</h1>
+                    <p></p>
+                    <button class="ghost" id="signUp">Administrateur</button>
+            </div>
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Gestion</h1>
+                    <p></p>
+                    <button class="ghost" id="signIn">Client</button>
+                </div>
+            </div>
+    </div>
 </div>
 
 <footer>

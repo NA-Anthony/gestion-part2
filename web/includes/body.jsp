@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="model.User"%>
 <%@page import="model.Connect"%>
 <%@page import="model.Admin"%>
 <body>
@@ -41,9 +42,9 @@
             <%
                 // Récupérer la session
                 HttpSession sessions = request.getSession();
-
-                if (sessions.getAttribute("admin") != null) {
-                // La session existe
+                User user = (User)sessions.getAttribute("user");
+                if (user.getRole() == "Chef") {
+                // Il s'agit d'un chef de département
                     %>
                         <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#insert" role="button" aria-expanded="false" aria-controls="insert">
@@ -54,13 +55,7 @@
                         <div class="collapse" id="insert">
                           <ul class="nav sub-menu">
                             <li class="nav-item">
-                              <a href="/mini-projet/pages/new_departement.jsp" class="nav-link">Insertion demande</a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/mini-projet/Pos2_servlet" class="nav-link">Poste</a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/mini-projet/pages/new_departement.jsp" class="nav-link">Département</a>
+                              <a href="/mini-projet/pages/new_demande_achat.jsp" class="nav-link">Demande d'Achat</a>
                             </li>
 
                           </ul>
@@ -78,9 +73,6 @@
             </a>
             <div class="collapse" id="list">
               <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="/mini-projet/pages/new_demande_achat.jsp" class="nav-link">Insertion demande</a>
-                </li>
                 <li class="nav-item">
                   <a href="/mini-projet/Poste_servlet" class="nav-link">Poste</a>
                 </li>
@@ -121,12 +113,12 @@
                         
                     <%
 
-                        if (sessions.getAttribute("admin") != null) {
-                            Admin ad = Connect.getAdmin((int)sessions.getAttribute("admin"));
+                        if (sessions.getAttribute("user") != null) {
+                            
                         // La session existe
                             %>
-                                <p class="tx-16 fw-bolder"><%= ad.getNom()%></p>
-                                <p class="tx-12 text-muted"><%= ad.getEmail()%></p>
+                                <p class="tx-16 fw-bolder"><%= user.getNom()%></p>
+                                <p class="tx-12 text-muted"><%= user.getEmail()%></p>
                             <%
                         }
                     %>
@@ -139,7 +131,7 @@
                         <%
                         // Récupérer la session
 
-                        if (sessions.getAttribute("admin") != null) {
+                        if (sessions.getAttribute("user") != null) {
                         // La session existe
                             %>
                             
@@ -151,18 +143,7 @@
                                 </a>
                             <%
                         }
-                        else{
-                            %>
-                                <a href="/mini-projet/pages/login.jsp" class="text-body ms-0">
-                                    <li class="dropdown-item py-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in me-2 icon-md"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
-                                        <span>Log In</span>
-                                    </li>
-                                </a>
-                            <%
-                        }  
-                        %>
-                      
+                    %>
                    
                   
                 </ul>

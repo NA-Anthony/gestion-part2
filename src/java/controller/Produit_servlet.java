@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Produit;
+import model.User;
 
 /**
  *
@@ -61,9 +63,11 @@ public class Produit_servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session = request.getSession();
         try {
+            User user = (User)session.getAttribute("user");
             Produit p = new Produit(0, request.getParameter("nom"));
-            p.save();
+            p.save(user);
             
             request.getRequestDispatcher("pages/new_demande_achat.jsp").forward(request, response);
             

@@ -157,7 +157,7 @@ public class Produit {
         }
     }
     
-    public void save() throws Exception {
+    public void save(User u) throws Exception {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -171,7 +171,7 @@ public class Produit {
             ps = con.prepareStatement(insertStockQuery, Statement.RETURN_GENERATED_KEYS);
             ps.setBigDecimal(1, new BigDecimal("0.00")); // prix_unitaire = 0
             ps.setBigDecimal(2, new BigDecimal("0.00")); // quantite = 0
-            ps.setInt(3, this.getIdSociete()); // id_societe de la société (tu devras ajouter un getter pour ça)
+            ps.setInt(3, u.getIdSociete()); // id_societe de la société (tu devras ajouter un getter pour ça)
             ps.executeUpdate();
 
             // Récupérer l'ID du stock inséré

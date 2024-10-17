@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Connect;
 import model.Departement;
+import model.User;
 
 /**
  *
@@ -52,7 +53,7 @@ public class Login_servlet extends HttpServlet {
         processRequest(request, response);
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("/mini-projet/accueil.jsp");
+        response.sendRedirect("/mini-projet/index.jsp");
     }
 
     /**
@@ -69,13 +70,13 @@ public class Login_servlet extends HttpServlet {
         processRequest(request, response);
         try {
             HttpSession session = request.getSession();
-            int ref = Connect.checkAdmin((String)request.getParameter("email"), (String)request.getParameter("mdp"));
-            if(ref != 0)
+            User user = new User().checkLogin((String)request.getParameter("email"), (String)request.getParameter("mdp"));
+            if(user != null)
             {
-                session.setAttribute("admin", ref);
+                session.setAttribute("user", user);
                 response.sendRedirect("/mini-projet/accueil.jsp");
             }
-            response.sendRedirect("/mini-projet/pages/index.jsp");
+            response.sendRedirect("/mini-projet/index.jsp");
         } catch (Exception e) {
         }
         
